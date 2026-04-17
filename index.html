@@ -13,10 +13,33 @@ body {
     color: #333;
 }
 
+/* LOGIN */
+#login {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    margin-top: 10px;
+    width: 200px;
+}
+
 .container {
     max-width: 800px;
     margin: auto;
     padding: 20px;
+    display: none;
 }
 
 .card {
@@ -28,7 +51,6 @@ body {
 
 h1 {
     text-align: center;
-    margin-bottom: 10px;
 }
 
 .lang-buttons {
@@ -43,11 +65,6 @@ button {
     border-radius: 8px;
     background: #e0e6ed;
     cursor: pointer;
-    transition: 0.2s;
-}
-
-button:hover {
-    background: #cfd6dd;
 }
 
 .content {
@@ -58,18 +75,6 @@ button:hover {
     display: block;
 }
 
-h2 {
-    margin-top: 0;
-}
-
-h3 {
-    margin-top: 20px;
-}
-
-ul {
-    padding-left: 20px;
-}
-
 img {
     width: 100%;
     max-width: 700px;
@@ -77,18 +82,25 @@ img {
     display: block;
     margin: 30px auto 0;
 }
-
-@media (max-width: 600px) {
-    .card {
-        padding: 15px;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- LOGIN -->
+<div id="login">
+    <div class="login-box">
+        <h2>Accès protégé</h2>
+        <input type="password" id="password" placeholder="Mot de passe">
+        <br>
+        <button onclick="checkPassword()">Entrer</button>
+        <p id="error" style="color:red;"></p>
+    </div>
+</div>
+
+<!-- SITE -->
+<div class="container" id="site">
+
 <div class="card">
 
 <h1>Réservoir</h1>
@@ -123,21 +135,15 @@ img {
 </ul>
 
 <h3>Phase 1 (de 0 à 12 minutes)</h3>
-
 <p>Priorité : la centrale solaire. Cela divise par 2 le temps de capture des autres bâtiments ! Il est important de contrôler et capturer ce bâtiment pendant la phase 1.</p>
-
 <p>Pour les autres bâtiments, il est important de faire la première capture car elle donne beaucoup d’eau !</p>
-
 <p>Attention, durant la phase 1, les membres de l’équipe alpha restent sur leur batiment (même si beaucoup de membres de l’équipe bêta viennent aider)</p>
 
 <h3>Phase 2 (de 12 à 30 minutes)</h3>
-
 <p>Vous devez rester sur votre bâtiment. Si vous ne pouvez capturer le batiment , votre mission sera d’empêcher l’ennemi de prendre le contrôle. Si vous ne pouvez pas empêcher l’ennemi de prendre le contrôle, il faudra demander de l’aide dans le chat « assaut ».</p>
 
 <h3>Phase 3 (de 30 minutes jusqu’à la fin)</h3>
-
 <p>C’est à ce moment que les citernes apparaissent. Les citernes deviennent prioritaires.</p>
-
 <p>Sur chaque batiment, les plus forts iront collecter les citernes et les plus faibles resteront pour s’assurer que l’ennemi ne capture pas le batiment.</p>
 </div>
 
@@ -165,25 +171,19 @@ img {
 </ul>
 
 <h3>Phase 1 (0 to 12 minutes)</h3>
-
 <p>Priority : solar plant. It halves capture time of other buildings ! It is important to control and capture it during phase 1.</p>
-
 <p>For other buildings, first capture gives a lot of water.</p>
-
 <p>During phase 1, alpha team stays on their building.</p>
 
 <h3>Phase 2 (12 to 30 minutes)</h3>
-
 <p>You must stay on your building. If you cannot capture it, prevent enemy control or ask for help in “assault” chat.</p>
 
 <h3>Phase 3 (30 minutes to end)</h3>
-
 <p>Tanks appear and become priority.</p>
-
 <p>Strong players collect tanks, others defend buildings.</p>
 </div>
 
-<!-- RU CORRIGÉ -->
+<!-- RU -->
 <div id="ru" class="content">
 <h2>Общие инструкции :</h2>
 
@@ -207,21 +207,15 @@ img {
 </ul>
 
 <h3>Фаза 1 (с 0 до 12 минут)</h3>
-
 <p>Приоритет : солнечная станция. Это в 2 раза уменьшает время захвата других зданий! Важно контролировать и захватить это здание в фазе 1.</p>
-
 <p>Для остальных зданий важно сделать первый захват, так как он даёт много воды!</p>
-
 <p>Внимание: во время фазы 1 участники команды альфа остаются на своём здании (даже если многие из команды бета приходят помогать)</p>
 
 <h3>Фаза 2 (с 12 до 30 минут)</h3>
-
 <p>Вы должны оставаться на своём здании. Если вы не можете захватить здание, ваша задача — помешать врагу взять его под контроль. Если вы не можете этому помешать, нужно запросить помощь в чате «assault».</p>
 
 <h3>Фаза 3 (с 30 минут до конца)</h3>
-
 <p>В этот момент появляются цистерны. Цистерны становятся приоритетом.</p>
-
 <p>На каждом здании более сильные игроки будут собирать цистерны, а более слабые останутся, чтобы не дать врагу захватить здание.</p>
 </div>
 
@@ -231,6 +225,19 @@ img {
 </div>
 
 <script>
+const PASSWORD = "MON_MOT_DE_PASSE";
+
+function checkPassword() {
+    let input = document.getElementById("password").value;
+    if (input === PASSWORD) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("site").style.display = "block";
+        initLang();
+    } else {
+        document.getElementById("error").innerText = "Mot de passe incorrect";
+    }
+}
+
 function setLang(lang) {
     localStorage.setItem("lang", lang);
     showLang(lang);
@@ -241,19 +248,18 @@ function showLang(lang) {
     document.getElementById(lang).classList.add('active');
 }
 
-(function() {
+function initLang() {
     let lang = localStorage.getItem("lang");
 
     if (!lang) {
         let browserLang = navigator.language.substring(0,2);
-
         if (browserLang === "fr") lang = "fr";
         else if (browserLang === "ru") lang = "ru";
         else lang = "en";
     }
 
     showLang(lang);
-})();
+}
 </script>
 
 </body>
