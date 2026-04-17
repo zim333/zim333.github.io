@@ -1,12 +1,253 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Mon site</title>
-</head>
-<body>
-    <h1>Bienvenue</h1>
-    <p>Voici mon site simple.</p>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Réservoir</title>
 
-    <img src="image.png" alt="Mon image" width="500">
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+    margin: 0;
+    background: #f5f7fa;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.lang-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 8px 14px;
+    margin: 4px;
+    border: none;
+    border-radius: 8px;
+    background: #e0e6ed;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #cfd6dd;
+}
+
+.content {
+    display: none;
+}
+
+.content.active {
+    display: block;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+img {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 12px;
+    display: block;
+    margin: 30px auto 0;
+}
+
+/* mobile */
+@media (max-width: 600px) {
+    .card {
+        padding: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Réservoir</h1>
+
+<div class="lang-buttons">
+    <button onclick="setLang('fr')">🇫🇷</button>
+    <button onclick="setLang('en')">🇬🇧</button>
+    <button onclick="setLang('ru')">🇷🇺</button>
+</div>
+
+<!-- FR -->
+<div id="fr" class="content">
+<h2>Consignes générales :</h2>
+
+<p>Le réservoir se divise en 3 phases :</p>
+<ul>
+<li>Phase 1 : de 0 à 12 minutes</li>
+<li>Phase 2 : de 12 à 30 minutes</li>
+<li>Phase 3 : de 30 minutes jusqu’à la fin</li>
+</ul>
+
+<p>Il y a deux catégories de joueurs :</p>
+<ul>
+<li>Équipe alpha : les joueurs affectés à des bâtiments qui ouvrent dès la phase 1</li>
+<li>Équipe bêta : les joueurs affectés à des bâtiments qui ouvrent à la phase 2. (Il devront aider les autres joueurs en attendant que la phase 2 commence)</li>
+</ul>
+
+<p>Il à 2 notion à ne pas confondre :</p>
+<ul>
+<li>Le contrôle d’un batiment => dès que notre escouade est en garnison</li>
+<li>La capture d’un batiment => au bout de 3 minutes de contrôle (ou 1 minute et demi si nous contrôlons la centrale solaire)</li>
+</ul>
+
+<h3>Phase 1 (de 0 à 12 minutes)</h3>
+
+<p>Priorité : la centrale solaire. Cela divise par 2 le temps de capture des autres bâtiments ! Il est important de contrôler et capturer ce bâtiment pendant la phase 1.</p>
+
+<p>Pour les autres bâtiments, il est important de faire la première capture car elle donne beaucoup d’eau !</p>
+
+<p>Attention, durant la phase 1, les membres de l’équipe alpha restent sur leur batiment (même si beaucoup de membres de l’équipe bêta viennent aider)</p>
+
+<h3>Phase 2 (de 12 à 30 minutes)</h3>
+
+<p>Vous devez rester sur votre bâtiment. Si vous ne pouvez capturer le batiment , votre mission sera d’empêcher l’ennemi de prendre le contrôle. Si vous ne pouvez pas empêcher l’ennemi de prendre le contrôle, il faudra demander de l’aide dans le chat « assaut ».</p>
+
+<h3>Phase 3 (de 30 minutes jusqu’à la fin)</h3>
+
+<p>C’est à ce moment que les citernes apparaissent. Les citernes deviennent prioritaires.</p>
+
+<p>Sur chaque batiment, les plus forts iront collecter les citernes et les plus faibles resteront pour s’assurer que l’ennemi ne capture pas le batiment.</p>
+</div>
+
+<!-- EN -->
+<div id="en" class="content">
+<h2>General Instructions :</h2>
+
+<p>The reservoir is divided into 3 phases :</p>
+<ul>
+<li>Phase 1 : 0 to 12 minutes</li>
+<li>Phase 2 : 12 to 30 minutes</li>
+<li>Phase 3 : 30 minutes to the end</li>
+</ul>
+
+<p>There are two types of players :</p>
+<ul>
+<li>Alpha team : players assigned to buildings available from phase 1</li>
+<li>Beta team : players assigned to buildings available from phase 2 (they help others before phase 2 starts)</li>
+</ul>
+
+<p>There are 2 concepts not to confuse :</p>
+<ul>
+<li>Building control => when your squad is inside</li>
+<li>Building capture => after 3 minutes of control (or 1.5 minutes if solar plant is controlled)</li>
+</ul>
+
+<h3>Phase 1 (0 to 12 minutes)</h3>
+
+<p>Priority : solar plant. It halves capture time of other buildings ! It is important to control and capture it during phase 1.</p>
+
+<p>For other buildings, first capture gives a lot of water.</p>
+
+<p>During phase 1, alpha team stays on their building.</p>
+
+<h3>Phase 2 (12 to 30 minutes)</h3>
+
+<p>You must stay on your building. If you cannot capture it, prevent enemy control or ask for help in “assault” chat.</p>
+
+<h3>Phase 3 (30 minutes to end)</h3>
+
+<p>Tanks appear and become priority.</p>
+
+<p>Strong players collect tanks, others defend buildings.</p>
+</div>
+
+<!-- RU -->
+<div id="ru" class="content">
+<h2>Общие инструкции :</h2>
+
+<p>Резервуар делится на 3 фазы :</p>
+<ul>
+<li>Фаза 1 : 0–12 минут</li>
+<li>Фаза 2 : 12–30 минут</li>
+<li>Фаза 3 : с 30 минут до конца</li>
+</ul>
+
+<p>Существует два типа игроков :</p>
+<ul>
+<li>Команда Альфа : здания доступны с 1 фазы</li>
+<li>Команда Бета : здания доступны со 2 фазы</li>
+</ul>
+
+<p>Два понятия :</p>
+<ul>
+<li>Контроль здания => отряд внутри</li>
+<li>Захват здания => через 3 минуты (1.5 минуты с солнечной станцией)</li>
+</ul>
+
+<h3>Фаза 1 (0–12 минут)</h3>
+<p>Приоритет : солнечная станция.</p>
+
+<h3>Фаза 2 (12–30 минут)</h3>
+<p>Оставайтесь на здании.</p>
+
+<h3>Фаза 3 (с 30 минут)</h3>
+<p>Цистерны становятся приоритетом.</p>
+</div>
+
+<img src="image.jpg" alt="Image du réservoir">
+
+</div>
+</div>
+
+<script>
+function setLang(lang) {
+    localStorage.setItem("lang", lang);
+    showLang(lang);
+}
+
+function showLang(lang) {
+    document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+    document.getElementById(lang).classList.add('active');
+}
+
+// auto language detection
+(function() {
+    let lang = localStorage.getItem("lang");
+
+    if (!lang) {
+        let browserLang = navigator.language.substring(0,2);
+
+        if (browserLang === "fr") lang = "fr";
+        else if (browserLang === "ru") lang = "ru";
+        else lang = "en";
+    }
+
+    showLang(lang);
+})();
+</script>
+
 </body>
 </html>
